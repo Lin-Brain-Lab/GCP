@@ -15,7 +15,7 @@ To start with, there are some handy commands you should keep in mind, such as:
 ## Install FSL on Vertex AI workbench
 1. Create a Google cloud account 
 2. Go to google cloud console, pick [Vertex AI](https://cloud.google.com/vertex-ai/docs/workbench/introduction) on the menu and create a workbench
-3. Choose the Machine and storage you like (there are some limitations here, should check on your quotas)
+3. Choose machine and storage (there are some limitations here, should check on your quotas)
 4. Start the VM and open up terminal
 5. [Install FSL](https://fsl.fmrib.ox.ac.uk/fsl/docs/#/install/linux)
 
@@ -43,8 +43,11 @@ To start with, there are some handy commands you should keep in mind, such as:
 * This is an alternative way to run fsl on google cloud, but you might need to adjust your script so the route to fsl can be set correctly
 1. Establish your VM by choosing Compute Engine >> VM instance
 2. Choose the machine and storage
-3. Mount virtual storage (the root storage does not have enough space for instaling FSL)
-4. 
+3. [Mount virtual storage](.Mountstorage/README.md) (the root storage does not have enough space for instaling FSL)
+
+5. 
+
+## Mount storage
 
 ## Other usefull stuff  
 1. [Using local terminal to run your google cloud](https://www.youtube.com/watch?v=hP9B3xXP1Ts)
