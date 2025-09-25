@@ -23,7 +23,8 @@ To start with, there are some handy commands you should keep in mind, such as:
      curl -Ls https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/getfsl.sh | sh -s
      ```
 7. Open up **another** terminal
-8. You are all set!
+
+<br /> You are all set!
 
 ## Run FSL on Vertex AI workbench
 * If you are running 1st level analysis for multiple subjects, I would suggest you to use **parallel** to boost up the speed
@@ -52,10 +53,10 @@ To start with, there are some handy commands you should keep in mind, such as:
      ```
    (if this doesn't work, go and download getfsl.sh and edit the file)
 
-6. Complete!
-7. Debugging:
+<br /> Complete!
+* Debugging:
    *  fsl:command not found
-   **Edit bashrc**
+   <br /> **Edit bashrc**
 ```sh
 FSLDIR=/MOUNT_DIR/fsl
 . ${FSLDIR}/etc/fslconf/fsl.sh
@@ -71,33 +72,56 @@ export FSLDIR PATH
       ```sh
       lsblk
       ```
-4. check if mounted(usually not properly mounted in the first time)
-5. You have to format the disk:
+4. Check if mounted(usually not properly mounted in the first time)
+      ```sh
+      df -h
+      ```
+6. You have to format the disk:
        ```sh
-       sudo mkfs.FILE_SYSTEM_TYPE -m 0 -E
+       sudo mkfs.FILE_SYSTEM_TYPE -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/DEVICE_NAME
        ```
-    %lazy_itable_init=0,lazy_journal_init=0,discard /dev/DEVICE_NAME
-    % f. create directory: for example: sudo mkdir -p/dir
-    % g. mount: sudo mount -o discard,defaults /dev/DEVICE_NAME /MOUNT_DIR
-    % h. check again: df -h
-    % i. Recommend to automatically mount so you do not need to mount it every time: see reference
-
+7. Create directory
+8. Mount
+       ```sh
+       sudo mount -o discard,defaults /dev/DEVICE_NAME /MOUNT_DIR
+       ```
 * Fusing cloud storage
-    % a. Make sure your google cloud permits access from google VM
-    % Stop your vm-->Edit VM-->see Access rights scope -->Set access rights
-    % for each API seperately
-    % b. sudo apt-get update
-    % c. sudo apt-get install gcsfuse
-    % d. mkdir FOLDER
-    % e. chmod 777 FOLDER
-    % f. gcsfuse BUCKET_NAME FOLDER
-     % if you have several subfolders you can do this: gcsfuse
-     % --implicit-dirs BUCKET_NAME FOLDER
-    % g. check if you have access cd FOLDER-->ls -l
+1. Make sure your google cloud permits access from google VM
+    <br />Stop your vm--> Edit VM --> see Access rights scope --> Set access rights for each API seperately
+2. Install gcsfuse
+       ```sh
+       sudo apt-get update
+       sudo apt-get install gcsfuse
+       ```
+3. Make a folder for fusing point and grant access
+       ```sh
+       mkdir FOLDER
+       chmod 777 FOLDER
+       ```
+4.  Start fusing
+       ```sh
+       gcsfuse BUCKET_NAME FOLDER
+       ```
+   * if you have several subfolders you can do this: gcsfuse
+      ```sh
+      --implicit-dirs BUCKET_NAME FOLDER
+      ```
+5. Check if you have access
+      ```sh
+      cd FOLDER
+      ls -l
+      ```
 
 ## Other usefull stuff  
 * [Using local terminal to run your google cloud](https://www.youtube.com/watch?v=hP9B3xXP1Ts)
+* [Mount automatically](https://www.youtube.com/watch?v=pDC3WrNhpZQ)
+
 ## References
+[Google Cloud](https://cloud.google.com/compute/docs/disks/format-mount-disk-linux)
+<br />[Youtube Tutorials](https://www.youtube.com/watch?v=pDC3WrNhpZQ)
+<br />[Youtube Tutorials](https://www.youtube.com/watch?v=AASvXXbgswg)
+
+
 
 
 
