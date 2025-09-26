@@ -115,6 +115,8 @@ export FSLDIR PATH
 ## Other usefull stuff  
 * [Using local terminal to run your google cloud](https://www.youtube.com/watch?v=hP9B3xXP1Ts)
 * [Mount automatically](https://www.youtube.com/watch?v=pDC3WrNhpZQ)
+* [How to run multiple subjects in fsl using script](https://andysbrainbook.readthedocs.io/en/latest/fMRI_Short_Course/fMRI_06_Scripting.html)
+  
 
 ## References
 [Google Cloud](https://cloud.google.com/compute/docs/disks/format-mount-disk-linux)
